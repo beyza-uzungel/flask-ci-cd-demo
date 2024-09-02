@@ -4,7 +4,7 @@ trigger:
       - master
 
 pool:
-  vmImage: Windows
+  name: Windows
 steps:
 - task: UsePythonVersion@0
   inputs:
