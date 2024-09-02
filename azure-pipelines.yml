@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - main
+      - master
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -13,14 +13,10 @@ steps:
     addToPath: true
 
 - script: |
+    python -m pip install --upgrade pip
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
 - script: |
-    python -m unittest discover
+    python -m unittest discover -s tests
   displayName: 'Run tests'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.SourcesDirectory)'
-    ArtifactName: 'drop'
